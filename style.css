@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#ascii-image{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 7px;
+    white-space: pre;
+    transform: scale(1, 0.5);
+}
+
+#button{
+    margin: auto;
+}
+
+#player{
+    display: none;
+}
+
+#canvas{
+    /* display: none; */
+}
