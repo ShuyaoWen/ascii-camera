@@ -6,6 +6,7 @@ const ctx = canvas.getContext("2d");
 const asciiImage = document.getElementById("ascii-image");
 const resolutionSelect = document.getElementById("resolution");
 const frameRateSelect = document.getElementById("frame-rate");
+const message = document.getElementById("message-container");
 let desiredWidth;
 let width = 320;
 let height = 240;
@@ -78,11 +79,6 @@ function produceImage() {
     
 }
 
-// // start ascii camera function
-// function startVideo() {
-//     interval = setInterval(produceImage, 1000 / frameRate);
-// }
-
 // pause ascii camera function
 function pauseVideo() {
     clearTimeout(interval);
@@ -91,21 +87,16 @@ function pauseVideo() {
 // get video stream
 navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
     video.srcObject = mediaStream;
-
+    produceImage();
+    message.style.display = "none";
 }).catch(error => console.log(error));
 
-
-
 button.addEventListener("click", function () {
-    if (button.value === "start video") {        
-        produceImage();
-        button.value = "pause video";
-    } else if (button.value === "resume video") {
+    if (button.value === "resume video") {
         produceImage();
         button.value = "pause video";
     } else {
         pauseVideo();
         button.value = "resume video";
     }
-
 });

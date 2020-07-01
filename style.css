@@ -22,8 +22,22 @@
     min-width: 500px;
 }
 
-#button{
-    
+#message-container{
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#message-container p{
+    width: auto;
+    height: auto; 
+    font-size: 2em;
+    text-align: center;
 }
 
 #player{
