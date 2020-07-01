@@ -87,8 +87,8 @@ function pauseVideo() {
 // get video stream
 navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
     video.srcObject = mediaStream;
-    produceImage();
     message.style.display = "none";
+    produceImage();
 }).catch(error => console.log(error));
 
 button.addEventListener("click", function () {
