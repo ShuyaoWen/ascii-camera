@@ -1,5 +1,5 @@
-let imageCapture;
 let interval;
+const video = document.querySelector('video');
 const button = document.getElementById("button");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -10,17 +10,7 @@ let height = 144;
 let frameRate = 30;
 // let characterRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
 // let characterRamp = " .:-=+*#%@";
-let characterRamp = "@%#*+=-:. "
-
-// get video stream
-navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
-    // show camera video
-    document.querySelector('video').srcObject = mediaStream;
-
-    const track = mediaStream.getVideoTracks()[0];
-    imageCapture = new ImageCapture(track);
-
-}).catch(error => console.log(error));
+let characterRamp = "@%#*+=-:. ";
 
 // takes rgb values and returns the grayscale value
 function getGrayscaleValue(r, g, b){
@@ -64,13 +54,10 @@ function getAscii(){
 
 // function to produce grayscale and ascii images
 function produceImage() {
-    imageCapture.grabFrame().then(function (imageBitmap) {
-        canvas.width = imageBitmap.width;
-        canvas.height = imageBitmap.height;
-        ctx.drawImage(imageBitmap, 0, 0, width, height);
-
-        asciiImage.textContent = getAscii();
-    }).catch(error => console.log(error));
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(video, 0, 0, width, height);
+    asciiImage.textContent = getAscii();
     
 }
 
@@ -83,6 +70,11 @@ function startVideo(){
 function pauseVideo(){
     clearInterval(interval);
 }
+
+// get video stream
+navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
+    video.srcObject = mediaStream;
+}).catch(error => console.log(error));
 
 button.addEventListener("click", function(){
     if(button.value === "start video"){
