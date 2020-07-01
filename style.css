@@ -7,9 +7,10 @@
 
 #ascii-image{
     font-family: 'Roboto Mono', monospace;
-    font-size: 7px;
+    font-size: 3.5px;
     white-space: pre;
-    transform: scale(1, 0.5);
+    transform: scale(2, 1);
+
 }
 
 #button{
@@ -21,5 +22,5 @@
 }
 
 #canvas{
-    /* display: none; */
+    display: none;
 }
