@@ -7,14 +7,23 @@
 
 #ascii-image{
     font-family: 'Roboto Mono', monospace;
-    font-size: 3.5px;
     white-space: pre;
     transform: scale(2, 1);
+    border-top: 2px solid black ;
+    border-bottom: 2px solid black ;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
 
+.control-container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 10vw;
+    min-width: 500px;
 }
 
 #button{
-    margin: auto;
+    
 }
 
 #player{

@@ -9,8 +9,22 @@
 
 <body>
     <div class="container">
+        <h1>Ascii Camera</h1>
         <p id="ascii-image"></p>
-        <input type="button" id="button" value="start video">
+        <div class="control-container">
+            <input type="button" id="button" value="start video">
+            <div>
+                <label>Resolution:</label>
+                <select id="resolution">
+                    <option>80x60</option>
+                    <option>120x90</option>
+                    <option selected>256x144</option>
+                    <option>320x240</option>
+                </select>
+            </div>
+            
+        </div>
+        
         <video id="player" autoplay></video>
         <canvas id="canvas"></canvas>
         
