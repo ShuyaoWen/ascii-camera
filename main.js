@@ -5,6 +5,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const asciiImage = document.getElementById("ascii-image");
 const resolutionSelect = document.getElementById("resolution");
+const frameRateSelect = document.getElementById("frame-rate");
 let desiredWidth;
 let width = 320;
 let height = 240;
@@ -56,27 +57,35 @@ function getAscii() {
 
 // function to produce grayscale and ascii images
 function produceImage() {
+    // get resolution chosen by user
     let resOption = resolutionSelect.value.split("x");
+    // set width and height of ascii image
     width = resOption[0];
     height = resOption[1];
+
     canvas.width = width;
     canvas.height = height;
+    // set font size
     let fontSize = 500 / height;
     fontSize = fontSize.toString() + "px";
     asciiImage.style.fontSize = fontSize;
+    // produce ascii text
     ctx.drawImage(video, 0, 0, width, height);
     asciiImage.textContent = getAscii();
-
+    // get user chosen frame rate
+    let rateOption = Number(frameRateSelect.value);
+    interval = setTimeout(produceImage, 1000/rateOption);
+    
 }
 
-// start ascii camera function
-function startVideo() {
-    interval = setInterval(produceImage, 1000 / frameRate);
-}
+// // start ascii camera function
+// function startVideo() {
+//     interval = setInterval(produceImage, 1000 / frameRate);
+// }
 
 // pause ascii camera function
 function pauseVideo() {
-    clearInterval(interval);
+    clearTimeout(interval);
 }
 
 // get video stream
@@ -89,10 +98,10 @@ navigator.mediaDevices.getUserMedia({ video: true }).then(mediaStream => {
 
 button.addEventListener("click", function () {
     if (button.value === "start video") {        
-        startVideo();
+        produceImage();
         button.value = "pause video";
     } else if (button.value === "resume video") {
-        startVideo();
+        produceImage();
         button.value = "pause video";
     } else {
         pauseVideo();
