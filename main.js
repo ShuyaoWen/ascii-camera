@@ -75,7 +75,7 @@ function produceImage() {
     asciiImage.textContent = getAscii();
     // get user chosen frame rate
     let rateOption = Number(frameRateSelect.value);
-    interval = setTimeout(produceImage, 1000/rateOption);
+    interval = setTimeout(function(){produceImage()}, 1000/rateOption);
     
 }
 
