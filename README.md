@@ -6,4 +6,4 @@ This camera converts the video footage from your camera into a video made from A
 Demo:
 https://shuyaowen.github.io/ascii-camera/
 
-Tested on Firefox and Chrome
+Note: incompatible with safari.
