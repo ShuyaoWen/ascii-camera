@@ -1,4 +1,4 @@
-let interval;
+let timeoutID;
 const video = document.querySelector('video');
 const button = document.getElementById("button");
 const canvas = document.getElementById("canvas");
@@ -75,13 +75,13 @@ function produceImage() {
     asciiImage.textContent = getAscii();
     // get user chosen frame rate
     let rateOption = Number(frameRateSelect.value);
-    interval = setTimeout(function(){produceImage()}, 1000/rateOption);
+    timeoutID = window.setTimeout(function(){produceImage()}, 1000/rateOption);
     
 }
 
 // pause ascii camera function
 function pauseVideo() {
-    clearTimeout(interval);
+    window.clearTimeout(timeoutID);
 }
 
 // get video stream
